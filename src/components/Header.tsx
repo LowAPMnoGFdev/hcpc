@@ -23,7 +23,7 @@ export default function Header() {
           </Link>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             <Link href="/" className="text-gray-700 hover:text-purple-600 transition">
               Home
             </Link>
@@ -35,6 +35,12 @@ export default function Header() {
             </Link>
             <Link href="/contact" className="text-gray-700 hover:text-purple-600 transition">
               Contact
+            </Link>
+            <Link href="/login" className="text-gray-700 hover:text-purple-600 transition font-semibold">
+              Log In
+            </Link>
+            <Link href="/register" className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition font-semibold">
+              Register
             </Link>
           </div>
 
@@ -98,6 +104,20 @@ export default function Header() {
               onClick={() => setIsMenuOpen(false)}
             >
               Contact
+            </Link>
+            <Link
+              href="/login"
+              className="block py-2 text-gray-700 hover:text-purple-600 font-semibold"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Log In
+            </Link>
+            <Link
+              href="/register"
+              className="block py-2 text-white bg-purple-600 hover:bg-purple-700 rounded-lg text-center font-semibold mt-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Register
             </Link>
           </div>
         )}

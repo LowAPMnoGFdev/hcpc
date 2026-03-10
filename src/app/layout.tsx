@@ -16,6 +16,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "HCPC - Custom PC Building & Tech Solutions",
   description: "Professional custom PC building, gaming rigs, workstations, and tech services",
+  icons: {
+    icon: "/Logo/image-removebg-preview.png",
+    apple: "/Logo/image-removebg-preview.png",
+  },
 };
 
 export default function RootLayout({

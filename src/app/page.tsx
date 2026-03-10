@@ -1,12 +1,11 @@
 import Link from 'next/link';
-import ServiceCard from '@/components/ServiceCard';
 import FadeIn from '@/components/FadeIn';
-import { StaggerContainer, StaggerItem } from '@/components/StaggerContainer';import { Gamepad2, MonitorSpeaker, ArrowUpCircle, Wrench, Droplet, MessageCircle } from 'lucide-react';
+import BuildsCarousel from '@/components/BuildsCarousel';
 export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-purple-600 to-purple-800 text-white py-20">
+      <section className="text-white py-20" style={{ backgroundColor: '#A799B7' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <FadeIn delay={0.2}>
@@ -39,80 +38,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Overview */}
+      {/* Sample Builds Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Our Services
+                Sample Builds
               </h2>
               <p className="text-lg text-gray-600">
-                From gaming beasts to professional workstations
+                Explore our latest custom PC builds
               </p>
             </div>
           </FadeIn>
           
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <StaggerItem>
-              <ServiceCard
-                icon={Gamepad2}
-                title="Gaming PCs"
-                description="High-performance gaming rigs built for maximum FPS"
-              />
-            </StaggerItem>
-            <StaggerItem>
-              <ServiceCard
-                icon={MonitorSpeaker}
-                title="Workstations"
-                description="Professional workstations for content creation and productivity"
-              />
-            </StaggerItem>
-            <StaggerItem>
-              <ServiceCard
-                icon={ArrowUpCircle}
-                title="PC Upgrades"
-                description="Upgrade your existing PC with the latest components"
-              />
-            </StaggerItem>
-            <StaggerItem>
-              <ServiceCard
-                icon={Wrench}
-                title="PC Repair"
-                description="Expert troubleshooting and repair services"
-              />
-            </StaggerItem>
-            <StaggerItem>
-              <ServiceCard
-                icon={Droplet}
-                title="Custom Cooling"
-                description="Water cooling and advanced thermal solutions"
-              />
-            </StaggerItem>
-            <StaggerItem>
-              <ServiceCard
-                icon={MessageCircle}
-                title="Consulting"
-                description="Expert advice on components and configurations"
-              />
-            </StaggerItem>
-          </StaggerContainer>
+          <FadeIn delay={0.2}>
+            <BuildsCarousel />
+          </FadeIn>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-purple-600 text-white">
+      <section className="rgb-bg py-20 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg">
               Ready to Build Your Dream PC?
             </h2>
-            <p className="text-xl mb-8 text-purple-100">
+            <p className="text-xl mb-8 text-white/90 drop-shadow">
               Let&apos;s create the perfect system for your needs
             </p>
             <Link
               href="/contact"
-              className="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-purple-50 transition inline-block"
+              className="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition inline-block shadow-lg"
             >
               Contact Us Today
             </Link>
