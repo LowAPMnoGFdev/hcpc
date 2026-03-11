@@ -79,8 +79,8 @@ export default function BuildsCarousel() {
   };
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto">
-      <div className="relative h-125 overflow-hidden rounded-xl">
+    <div className="relative w-full max-w-7xl mx-auto">
+      <div className="relative h-[600px] md:h-[700px] overflow-hidden rounded-xl">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={currentIndex}

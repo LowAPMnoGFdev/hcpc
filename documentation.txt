@@ -1,0 +1,525 @@
+TABLE OF CONTENTS 
+ 
+Page Number 
+Cover Page  	 	 	 	 	 	 	 	 	 	 
+Table of Contents 	 	 	 	
+Table of Figures 	 	 	 	 
+ 	 	 	 	 
+Chapter 1 - Introduction  	 	 	 	 	 	 	 	 
+	Overview of the System 	 	  	 	 	 	 	 	1 
+ 	Background of the Study 
+ 	Statement of the Problem 
+	Objectives 	       2 
+	  	General Objectives 
+	  	Specific Objectives 
+Scope and Limitations 
+ 
+Chapter 2 - Review of Related Literature and Systems                                   
+ 	Related Studies and Systems                                                                        3 
+ 	Security Issues in Existing System 
+ 
+Chapter 3 – System Analysis and Requirements 
+ 	Existing System Analysis                                                                               4 
+ 	Problems Identified in the Existing System 
+ 	  	Security Related Issues 
+ 	  	Other Issues (Not Security Related) 
+ 	Functional Requirements 
+ 	Non-Functional Requirements                                                                      5 
+ 	User Roles and Access Levels 
+Chapter 4 – System Design, Security Design, and Implementation
+	Development Tools and Technologies
+	System Modules
+	Database Design
+			Database Tables
+	User-Interface Design
+
+Chapter 5 – Security Design and Implementation
+	Security Threat Analysis
+	Identified Vulnerabilities
+	Security Controls Implemented
+	Conclusion
+	Recommendation for Future Enhancements
+
+References
+
+
+ 
+Chapter 1 – Introduction 
+ 
+Overview of the system 
+In the modern digital landscape, the transition from manual service provisioning to web-based platforms is essential for operational efficiency. The proposed system, HCPC Services Web Portal, is designed to streamline the process of availing services online. However, as organizations migrate data and transactions to the web, the attack surface for potential security breaches expands. This research focuses not only on the functionality of service availment but prioritizes the implementation of 
+Information Assurance and Security (IAS) standards. The system aims to ensure the Confidentiality, Integrity, and Availability (CIA triad) of user data while facilitating seamless service transactions. 
+ 
+Background of the Study 
+Currently, many service-oriented organizations rely on manual processing or legacy systems that lack robust security measures. Clients wishing to avail of HCPC services may face challenges such as slow processing times, lack of transparency, and the risk of physical document loss. More critically, existing digital solutions often neglect advanced security protocols, making sensitive user information vulnerable to unauthorized access, SQL injection, and Cross-Site Scripting (XSS). This study addresses the need for a modernized, secure platform that allows users to request, track, and manage services remotely while adhering to strict security compliance standards to protect personally identifiable information (PII). 
+ 
+Statement of the Problem 
+The primary problem this study seeks to address is the lack of a secure and efficient mechanism for availing HCPC services online. Specifically, the study aims to answer the following questions: 
+1.	How can the current manual or insecure digital processes of HCPC be transitioned to a secure web-based platform? 
+2.	What specific vulnerabilities exist in standard service availment websites, and how can they be mitigated? 
+3.	How can the system ensure the integrity of transaction records and the confidentiality of client data against cyber threats? 
+4.	What authentication and authorization mechanisms are necessary to prevent unauthorized access to sensitive service records? 
+ 
+ 
+ 
+Objectives 
+General Objectives 
+To design, develop, and implement a web-based service availment system for HCPC that integrates robust Information Assurance and Security measures to protect user data and ensure secure transactions. 
+Specific Objectives 
+1.	To develop a user-friendly interface for clients to browse, request, and track HCPC services online. 
+2.	To implement Multi-Factor Authentication (MFA) and Role-Based Access Control (RBAC) to restrict system access based on user privileges. 
+3.	To secure data at rest and in transit using industry-standard encryption protocols (e.g., AES-256 for databases and TLS 1.3 for transmission). 
+4.	To integrate input validation and sanitization techniques to prevent common web vulnerabilities such as SQL Injection and XSS. 
+5.	To generate automated audit logs that track all user activities and system changes for accountability and forensic analysis. 
+Scope and Limitations 
+Scope 
+The study focuses on the development of the HCPC Services website, covering the following functionalities: 
+•	User Module: Registration, login, service catalog viewing, service application, and status tracking. 
+•	Admin Module: Application review, approval/rejection of services, and user management. 
+•	Security Features: Implementation of HTTPS, password hashing (e.g., Bcrypt/Argon2), secure session management, and encrypted database storage. 
+The system will be developed as a web application accessible via standard web browsers (Chrome, Firefox, Edge). 
+Limitations 
+•	Hardware Dependency: The security of the system is partially dependent on the physical security of the server hosting the application, which is outside the scope of the software development phase. 
+•	User Endpoint Security: The system cannot protect against threats originating from the user's compromised device (e.g., keyloggers on the client machine). 
+•	Payment Processing: While the system facilitates service requests, actual financial transaction processing may rely on third-party payment gateway sandboxes and will not process real currency during the testing phase. 
+•	Connectivity: The system functionality requires an active internet connection; no offline mode is fully supported. 
+ 
+Chapter 2 - Review of Related Literature and Systems 
+ 
+Related Studies and Systems 
+The shift from traditional, paper-based service provisioning to web-based platforms has been a global trend for both government and private organizations. Studies on E-Government and organizational web portals consistently highlight that digital migration improves operational efficiency, reduces processing time, and enhances transparency. For instance, widely used systems like the passport online appointment system or university Student Information Systems serve as benchmarks for the HCPC Services Web Portal. These systems allow users to perform transactions remotely, reducing physical congestion and overhead costs. 
+However, studies warn that security often takes a backseat to functionality. Reports from OWASP show that many sites are vulnerable because they lack basic protections. This makes the CIA Triad (Confidentiality, Integrity, and Availability) essential, it ensures that while we make the service easy to use, we keep user data locked down and safe. 
+ 
+Security Issues in Existing System 
+•	Physical Security Risks: In manual systems, sensitive documents are stored in physical filing cabinets, making them vulnerable to theft, unauthorized photocopying, or destruction by natural disasters. 
+•	Lack of Encryption: Many legacy systems transmit data over HTTP rather than HTTPS and store passwords in plain text, exposing users to Man-in-theMiddle attacks and credential theft. 
+•	Weak Access Control: Older systems often lack Role-Based Access Control (RBAC), allowing lower-level employees to access sensitive administrative or client records without a business need. 
+•	Absence of Audit Trails: Manual logs are easily manipulated or lost. Without immutable digital audit logs, it is nearly impossible to trace who accessed or modified a record, hindering forensic analysis during a breach. 	 
+ 
+ 
+Chapter 3 – System Analysis and Requirements 
+Existing System Analysis 
+The current operational workflow for HCPC services is primarily manual or reliant on disjointed legacy software. Clients are required to message or email for the service, and follow up on their status. Data is encoded manually by staff into local spreadsheets or a notepad that lacks efficiency and security controls. The process is linear and bottleneck-prone. There is no real-time interface for clients to check the status of their requests. 
+Problems Identified in the Existing System 
+Security Related Issues 
+•	Data Leakage: Using personal social media accounts for work mixes private and professional conversations, increasing the risk of accidental leaks. 
+•	Lack of Access Control: Since there are no roles, every team member has full access to everything. A co-worker or temporary helper could accidentally delete the entire client list. 
+•	Phishing Risks: Relying on email for everything makes the team highly vulnerable to phishing attacks disguised as client inquiries. 
+Other Issues (Not Security Related) 
+•	Bottlenecks: With only three credible people managing everything manually, responding to inquiries takes too long, leading to lost clients. 
+•	Status Confusion: Clients have to constantly message the team to ask for updates, distracting the team from actual work. 
+•	Lost Files: Without a central repository, final deliverables sometimes get lost in email chains. 
+Functional Requirements 
+The system needs to act as a force multiplier for the small team: 
+1.User Authentication Module: 
+•	Simple but secure login for clients. 
+•	Admin login for the 3 team members with enforced strong passwords. 
+2.Service & Order Management: 
+•	Client: Browse services, place an order, upload requirements, and see a simple progress bar. 
+•	Admin: A unified dashboard where the 3 admins can pick up tasks, mark them as complete, and deliver files securely. 
+ 
+ 
+3.Activity Log: 
+•	A simple log showing which of the 3 admins touched a specific order, creating accountability. 
+ 
+Non-Functional Requirements 
+1.Security (Priority): 
+•	Data Encryption: Files uploaded by clients must be encrypted so only the team can read them. 
+•	Session Management: Automatic logout to prevent access if a team member leaves their laptop open at a coffee shop. 
+2.Ease of Use: The admin panel must be very simple so the team spends less time managing and more time working. 
+3.Availability: The site needs to be up 24/7 so international clients can order while the local team sleeps. 
+ 
+User Roles and Access Levels 
+1.Guest: 
+•	Can view the portfolio and service list. Can register. 
+2.Client: 
+•	Can log in, order services, and download their own finished files. Cannot see other clients' orders. 
+3.Admin: 
+•	Full access to view all orders, assign tasks to themselves, and upload final deliverables. 
+•	Includes basic audit logging to see which admin did what.
+4. Super Admin:
+•	All Admin capabilities plus the ability to manage admin accounts, assign and revoke roles, and view the full system audit log.
+•	The Super Admin role cannot be assigned through the user interface; it must be provisioned directly at the database level to prevent privilege escalation attacks.
+
+
+Chapter 4 – System Design and Implementation
+
+Development Tools and Technologies
+The HCPC Services Web Portal is built on a modern, component-driven technology stack selected for its performance, security posture, and developer productivity.
+
+Frontend Framework: Next.js 16.1.6
+Next.js is a React-based framework that provides server-side rendering (SSR), static site generation (SSG), and a file-based routing system through its App Router architecture. Its built-in support for HTTP security headers, image optimization, and font subsetting reduces the attack surface compared to a purely client-side single-page application (SPA). All page routing is handled server-side, preventing client-side route manipulation.
+
+UI Library: React 19.2.3
+React serves as the declarative UI library for building reusable, state-managed interface components. Its virtual DOM implementation prevents direct DOM manipulation, which is a foundational defense against Cross-Site Scripting (XSS) attacks, as React automatically escapes values rendered in JSX before passing them to the DOM.
+
+Language: TypeScript 5.9.3
+TypeScript is a statically typed superset of JavaScript. Its compile-time type checking eliminates an entire class of runtime errors caused by unexpected data types, which is especially critical when handling user-sourced input and API response data. Strict mode is enabled in tsconfig.json to enforce maximum type safety throughout the codebase.
+
+Styling: Tailwind CSS v4
+Tailwind is a utility-first CSS framework that generates only the CSS classes actually used in the project, resulting in minimal stylesheet sizes. All styling is applied declaratively through class names rather than dynamic style injection, eliminating style-based XSS vectors.
+
+Animation: Framer Motion 12.34.0
+Framer Motion is a production-ready animation library for React. It is used for scroll-triggered fade and stagger animations that improve perceived performance and user experience across the portal's public-facing pages.
+
+Icon Library: Lucide React 0.563.0
+Lucide React provides a consistent set of SVG-based icons used throughout the interface. Icons are rendered as inline React components rather than external image requests, eliminating the need for third-party icon CDN calls that could be vectors for supply-chain attacks.
+
+Typography: Inter & Montserrat (Google Fonts via next/font)
+Fonts are loaded using Next.js's built-in next/font/google module, which self-hosts font files at build time. This eliminates external font CDN requests at runtime, preventing font-based tracking and removing an external dependency that could be subject to third-party compromise.
+
+Version Control: Git
+The project is version-controlled using Git to maintain a complete change history, enabling rollback to any prior state in the event of an accidental or malicious modification to the codebase.
+
+Database: PostgreSQL
+PostgreSQL is an open-source, ACID-compliant relational database management system used to persist all application data — including user accounts, sessions, orders, messages, and security logs. Its support for UUID primary keys, ENUM types, JSON columns, and row-level security aligns directly with the HCPC database schema requirements. Connection to the database is managed through a server-side ORM or query builder layer, ensuring that all queries are parameterized and no raw SQL constructed from user input is ever executed, fully mitigating SQL Injection. PostgreSQL's robust foreign key enforcement guarantees referential integrity across the relational schema.
+
+
+System Modules
+
+The HCPC Services Web Portal is organized into the following functional modules:
+
+1. Public Module (Guest Access)
+   •  Homepage (/): Displays the hero section, a sample builds image carousel, and a call-to-action directing visitors to register or browse services.
+   •  Services Page (/services): Displays the six available service offerings — Gaming PC Builds, Office PCs, PC Upgrades, Repair & Maintenance, Peripherals Setup, and PC Consulting — each rendered as a card with a relevant icon and description.
+   •  About Page (/about): Presents company information, core values, and key team capabilities.
+
+2. Authentication Module
+   •  Registration Page (/register): Provides a form for new clients to create an account. Client-side validation enforces minimum password length, uppercase and lowercase characters, and numeric inclusion before the form is submitted. Terms acceptance is required.
+   •  Login Page (/login): Provides secure credential entry with show/hide password toggle. On successful authentication, the user is redirected to the Member Dashboard.
+
+3. Member Module (Authenticated Client Access)
+   •  Member Dashboard (/member): Displays the authenticated client's profile summary, order statistics (total orders, active orders), a list of their service orders with real-time status and progress indicators, and quick-action navigation to account settings, order history, and messages.
+
+4. Admin Module (Admin & Super Admin Access)
+   •  Admin Dashboard (/admin): Provides a management interface for administrators, featuring key statistical cards (Total Orders, Active Users, Pending Builds, Messages), a recent orders table with customer name, service, status, and date, and navigation shortcuts to order management, user management, and system settings.
+
+5. Security & Logging Module (Backend)
+   •  Handles session issuance and validation, authentication event logging, and audit trail generation for all privileged actions performed within the Admin and Super Admin modules.
+
+
+Database Design
+
+The database follows a normalized relational model designed to enforce referential integrity, support Role-Based Access Control (RBAC), and maintain immutable audit and authentication logs. All primary keys for transactional and user-facing tables use UUIDs rather than sequential integers to prevent enumeration attacks. Reference and lookup tables (roles, permissions, services) use integer primary keys for efficient join operations.
+
+The overall structure is organized into three logical groups:
+
+1. Identity & Access Management Tables: roles, permissions, role_permissions, users, sessions
+2. Business Logic Tables: services, orders, order_status_history, messages
+3. Security & Logging Tables: auth_logs, audit_logs
+
+
+Database Tables
+
+roles
+Stores the three fixed privilege levels of the system. Records in this table are seeded at deployment and are not modified at runtime.
+
+| Column      | Data Type    | Constraints              |
+|-------------|--------------|--------------------------|
+| id          | INT          | PRIMARY KEY, AUTO_INCREMENT |
+| name        | VARCHAR(50)  | UNIQUE, NOT NULL         |
+| description | VARCHAR(255) | NULLABLE                 |
+
+Seed Data: (1, 'user'), (2, 'admin'), (3, 'super_admin')
+
+permissions
+Stores granular action-based permissions that can be assigned to roles. This table enables fine-grained access control checks without hardcoding privilege logic in application code.
+
+| Column | Data Type    | Constraints              |
+|--------|--------------|--------------------------|
+| id     | INT          | PRIMARY KEY, AUTO_INCREMENT |
+| name   | VARCHAR(100) | UNIQUE, NOT NULL         |
+
+Sample Seed Data: 'orders.view', 'orders.update', 'orders.delete', 'users.manage', 'admins.manage', 'audit_logs.view'
+
+role_permissions
+Junction table implementing the many-to-many relationship between roles and permissions.
+
+| Column        | Data Type | Constraints                          |
+|---------------|-----------|--------------------------------------|
+| role_id       | INT       | FOREIGN KEY → roles.id, NOT NULL     |
+| permission_id | INT       | FOREIGN KEY → permissions.id, NOT NULL |
+| PRIMARY KEY   |           | (role_id, permission_id)             |
+
+users
+Stores all registered accounts regardless of role. The role_id foreign key links each user to their assigned privilege level. Password hashing is performed at the application layer using Argon2id prior to storage; plain-text passwords are never persisted. The super_admin role (role_id = 3) must be assigned directly at the database level and cannot be set through any application API endpoint.
+
+| Column        | Data Type    | Constraints                          |
+|---------------|--------------|--------------------------------------|
+| id            | UUID         | PRIMARY KEY                          |
+| name          | VARCHAR(100) | NOT NULL                             |
+| email         | VARCHAR(255) | UNIQUE, NOT NULL                     |
+| phone         | VARCHAR(20)  | NULLABLE                             |
+| password_hash | VARCHAR(255) | NOT NULL                             |
+| role_id       | INT          | FOREIGN KEY → roles.id, DEFAULT 1   |
+| is_active     | BOOLEAN      | DEFAULT TRUE                         |
+| created_at    | TIMESTAMP    | DEFAULT CURRENT_TIMESTAMP            |
+| updated_at    | TIMESTAMP    | ON UPDATE CURRENT_TIMESTAMP          |
+
+sessions
+Tracks active authenticated sessions. Tokens are stored as hashed values; the raw token is delivered to the client as an HttpOnly, Secure, SameSite=Strict cookie and is never stored in local storage or exposed to JavaScript.
+
+| Column      | Data Type    | Constraints                      |
+|-------------|--------------|----------------------------------|
+| id          | UUID         | PRIMARY KEY                      |
+| user_id     | UUID         | FOREIGN KEY → users.id, NOT NULL |
+| token_hash  | VARCHAR(255) | NOT NULL                         |
+| ip_address  | VARCHAR(45)  | NULLABLE (supports IPv6)         |
+| user_agent  | VARCHAR(255) | NULLABLE                         |
+| expires_at  | TIMESTAMP    | NOT NULL                         |
+| created_at  | TIMESTAMP    | DEFAULT CURRENT_TIMESTAMP        |
+
+services
+A seeded reference table containing the six services offered by HCPC. Populated at deployment and managed only by the Super Admin. The is_active flag allows services to be toggled off without deletion.
+
+| Column      | Data Type   | Constraints              |
+|-------------|-------------|--------------------------|
+| id          | INT         | PRIMARY KEY, AUTO_INCREMENT |
+| title       | VARCHAR(100)| NOT NULL                 |
+| description | TEXT        | NULLABLE                 |
+| icon        | VARCHAR(50) | Lucide icon name         |
+| is_active   | BOOLEAN     | DEFAULT TRUE             |
+
+orders
+The central transactional table linking a client (user_id) to a requested service (service_id). The display_id column stores a human-readable reference number (e.g., #12345) for use in the member dashboard and admin panel. Status transitions are constrained to a defined ENUM to prevent invalid state values.
+
+| Column     | Data Type                                                 | Constraints                         |
+|------------|-----------------------------------------------------------|-------------------------------------|
+| id         | UUID                                                      | PRIMARY KEY                         |
+| display_id | VARCHAR(10)                                               | UNIQUE, NOT NULL                    |
+| user_id    | UUID                                                      | FOREIGN KEY → users.id, NOT NULL    |
+| service_id | INT                                                       | FOREIGN KEY → services.id, NOT NULL |
+| status     | ENUM('Pending', 'In Progress', 'Completed', 'Cancelled') | DEFAULT 'Pending'                   |
+| progress   | TINYINT                                                   | DEFAULT 0, RANGE 0–100              |
+| notes      | TEXT                                                      | NULLABLE, admin-only                |
+| created_at | TIMESTAMP                                                 | DEFAULT CURRENT_TIMESTAMP           |
+| updated_at | TIMESTAMP                                                 | ON UPDATE CURRENT_TIMESTAMP         |
+
+order_status_history
+An append-only table that records every status and progress change made to an order. This powers a timeline view on the Member Dashboard and ensures a tamper-evident history of each build's lifecycle. No UPDATE or DELETE operations are permitted on this table.
+
+| Column     | Data Type                                                 | Constraints                         |
+|------------|-----------------------------------------------------------|-------------------------------------|
+| id         | UUID                                                      | PRIMARY KEY                         |
+| order_id   | UUID                                                      | FOREIGN KEY → orders.id, NOT NULL   |
+| status     | ENUM('Pending', 'In Progress', 'Completed', 'Cancelled') | NOT NULL                            |
+| progress   | TINYINT                                                   | NULLABLE                            |
+| changed_by | UUID                                                      | FOREIGN KEY → users.id, NOT NULL    |
+| created_at | TIMESTAMP                                                 | DEFAULT CURRENT_TIMESTAMP           |
+
+messages
+Stores internal messages or inquiries submitted by authenticated clients. The user_id is nullable to allow for potential future guest submissions. Messages are accessible from the Admin Dashboard and are flagged as read/unread.
+
+| Column     | Data Type    | Constraints                      |
+|------------|--------------|----------------------------------|
+| id         | UUID         | PRIMARY KEY                      |
+| user_id    | UUID         | FOREIGN KEY → users.id, NULLABLE |
+| subject    | VARCHAR(200) | NOT NULL                         |
+| body       | TEXT         | NOT NULL                         |
+| is_read    | BOOLEAN      | DEFAULT FALSE                    |
+| created_at | TIMESTAMP    | DEFAULT CURRENT_TIMESTAMP        |
+
+auth_logs
+An append-only security log that records every authentication event. The email column is always populated — including for failed login attempts where no matching user exists — to support brute-force detection and forensic analysis. This table must never be truncated or modified after insertion.
+
+| Column     | Data Type                                                   | Constraints                      |
+|------------|-------------------------------------------------------------|----------------------------------|
+| id         | UUID                                                        | PRIMARY KEY                      |
+| user_id    | UUID                                                        | FOREIGN KEY → users.id, NULLABLE |
+| email      | VARCHAR(255)                                                | NOT NULL                         |
+| event      | ENUM('login_success', 'login_failed', 'logout', 'register') | NOT NULL                         |
+| ip_address | VARCHAR(45)                                                 | NULLABLE                         |
+| user_agent | VARCHAR(255)                                                | NULLABLE                         |
+| created_at | TIMESTAMP                                                   | DEFAULT CURRENT_TIMESTAMP        |
+
+audit_logs
+An append-only table recording every privileged action performed by Admin and Super Admin accounts. The actor_role column is a snapshot of the user's role at the time of the action, ensuring historical accuracy even if the actor's role is later changed. The old_value and new_value columns store JSON representations of the record before and after modification, providing a complete forensic trail.
+
+| Column       | Data Type    | Constraints                         |
+|--------------|--------------|-------------------------------------|
+| id           | UUID         | PRIMARY KEY                         |
+| actor_id     | UUID         | FOREIGN KEY → users.id, NOT NULL    |
+| actor_role   | VARCHAR(50)  | Snapshot, NOT NULL                  |
+| action       | VARCHAR(100) | e.g. 'order.status_updated', NOT NULL |
+| target_table | VARCHAR(50)  | NULLABLE                            |
+| target_id    | UUID         | NULLABLE                            |
+| old_value    | JSON         | NULLABLE                            |
+| new_value    | JSON         | NULLABLE                            |
+| ip_address   | VARCHAR(45)  | NULLABLE                            |
+| created_at   | TIMESTAMP    | DEFAULT CURRENT_TIMESTAMP           |
+
+
+Entity Relationship Summary
+
+roles ──< role_permissions >── permissions
+roles ──< users
+users ──< sessions
+users ──< orders >── services
+orders ──< order_status_history
+users ──< order_status_history (as changed_by)
+users ──< messages
+users ──< auth_logs (nullable)
+users ──< audit_logs (as actor)
+
+Relationship Cardinalities:
+•  roles → users: One-to-Many (1:N)
+•  roles ↔ permissions: Many-to-Many (M:N) via role_permissions
+•  users → sessions: One-to-Many (1:N)
+•  users → orders: One-to-Many (1:N)
+•  services → orders: One-to-Many (1:N)
+•  orders → order_status_history: One-to-Many (1:N)
+•  users → messages: One-to-Many (1:N, nullable)
+•  users → auth_logs: One-to-Many (1:N, nullable)
+•  users → audit_logs: One-to-Many (1:N)
+
+
+User-Interface Design
+
+The HCPC Services Web Portal follows a consistent visual design language across all pages, centered on a purple brand color scheme (#A799B7 primary, #7C3AED accent) with white backgrounds and gray-50 section fills for content areas. Typography uses the geometric sans-serif pairing of Inter (body text) and Montserrat (headings), reflecting the technical and modern nature of the business. All animations are handled by Framer Motion using scroll-triggered fade-in and staggered reveal patterns that enhance perceived performance without interrupting the user's flow.
+
+Public Pages:
+The Homepage features a full-width hero section with a primary call-to-action directing visitors to browse services or register, followed by an auto-playing image carousel showcasing sample PC builds, and a gradient call-to-action section. The Services page renders the six service offerings as a responsive three-column card grid, each card containing a Lucide icon, service title, and description. The About page presents company values and team capabilities using a split-column layout with directional fade animations.
+
+Authentication Pages:
+The Login and Registration pages present centered single-column forms with real-time client-side validation. Password fields include a visibility toggle. Error messages appear inline beneath each field and clear on user interaction. The Registration page enforces password complexity rules (minimum 8 characters, uppercase, lowercase, numeric) and requires terms acceptance before submission.
+
+Member Dashboard:
+The Member Dashboard uses a two-column layout: a sidebar presenting the user's profile card, membership statistics, and navigation shortcuts; and a main content area displaying active and past orders as a list with status badges and animated progress bars.
+
+Admin Dashboard:
+The Admin Dashboard opens with a four-column statistics grid displaying Total Orders, Active Users, Pending Builds, and Messages counters. Below this, a full-width recent orders table lists the most recent transactions with customer name, service, status badge (color-coded by state), and date. The layout is designed for fast triage and task assignment by the administrative team.
+
+The entire interface is fully responsive, collapsing desktop multi-column layouts to single-column stacks on mobile viewports. The navigation header switches from an inline desktop menu to a hamburger-triggered mobile menu at the medium breakpoint.
+
+
+Chapter 5 – Security Design and Implementation
+
+Security Threat Analysis
+
+The HCPC Services Web Portal handles Personally Identifiable Information (PII) including names, email addresses, phone numbers, and hashed credentials. It also manages business-sensitive order records and internal administrative communications. A structured threat analysis was conducted using the OWASP Top 10 (2021) as a reference framework to identify the most probable and impactful attack vectors against this system.
+
+The following threat categories were assessed as relevant to the system's architecture:
+
+1.  Broken Access Control (A01): Unauthorized users accessing member or admin routes, or a client accessing another client's order records.
+2.  Cryptographic Failures (A02): Exposure of sensitive data through weak or absent encryption of passwords, session tokens, or data in transit.
+3.  Injection (A03): SQL Injection through unsanitized database queries; Cross-Site Scripting (XSS) through unsanitized user-supplied input rendered in the DOM.
+4.  Insecure Design (A04): Architectural decisions that embed security flaws, such as exposing admin routes without server-side role verification.
+5.  Security Misconfiguration (A05): Missing or misconfigured HTTP security headers that allow clickjacking, MIME-type sniffing, or information disclosure.
+6.  Identification and Authentication Failures (A07): Weak password policies, missing brute-force protection on login endpoints, insecure session token storage.
+7.  Software and Data Integrity Failures (A08): Use of unverified third-party packages or client-side tampering with role or session data.
+8.  Security Logging and Monitoring Failures (A09): Absence of logs for authentication events and privileged actions, preventing detection and forensic analysis of incidents.
+
+
+Identified Vulnerabilities
+
+Based on the threat analysis and examination of the existing manual operational workflow, the following specific vulnerabilities were identified:
+
+1.  Credential Exposure: The prior manual process transmitted service requests and client information over unencrypted email channels, exposing data to interception.
+2.  Absence of Authentication: The legacy workflow had no login system; any team member with access to the email account could read all client communications.
+3.  Privilege Escalation Risk: Without a formal RBAC system, there was no mechanism to prevent a user from accessing administrative resources by directly navigating to a protected URL.
+4.  Session Hijacking: Browser-based applications that store session tokens in localStorage are vulnerable to token theft via XSS. An improperly secured session cookie is equally exploitable.
+5.  Brute-Force Authentication: A login endpoint with no rate limiting or lockout policy is vulnerable to automated credential-stuffing and brute-force attacks.
+6.  XSS via User Input: Any user-supplied string that is rendered in the DOM without sanitization can be used to inject malicious scripts.
+7.  Clickjacking: Without an X-Frame-Options header, the portal could be embedded in a malicious iframe to trick users into performing unintended actions.
+8.  Information Disclosure via Headers: Default server headers can reveal the technology stack, version numbers, and server type to potential attackers conducting reconnaissance.
+9.  Audit Trail Absence: The manual workflow produced no tamper-evident record of who accessed or modified a client record, making post-incident forensics impossible.
+
+
+Security Controls Implemented
+
+The following security controls were designed and implemented to mitigate the identified vulnerabilities:
+
+1. Transport Security (TLS)
+   All data transmitted between the client browser and the server is encrypted using TLS 1.3. HTTP requests are redirected to HTTPS at the application layer. The Strict-Transport-Security (HSTS) response header is set with a value of max-age=63072000; includeSubDomains; preload, instructing browsers to enforce HTTPS connections for a two-year period and preventing SSL-stripping attacks.
+
+2. HTTP Security Headers
+   A global security header policy is applied to every route in the application via the Next.js configuration layer:
+   •  Strict-Transport-Security: Enforces HTTPS for all future requests.
+   •  X-Frame-Options: SAMEORIGIN — prevents the portal from being embedded in third-party iframes, mitigating clickjacking.
+   •  X-Content-Type-Options: nosniff — prevents browsers from MIME-type sniffing responses, blocking content-type confusion attacks.
+   •  X-XSS-Protection: 1; mode=block — activates the browser's legacy XSS filter as a secondary defense layer.
+   •  Referrer-Policy: origin-when-cross-origin — limits referrer information sent to external sites, reducing information leakage.
+   •  Permissions-Policy: Disables camera, microphone, and geolocation access to minimize the browser API attack surface.
+   •  X-DNS-Prefetch-Control: on — controls DNS prefetching behavior to reduce information leakage to external DNS resolvers.
+
+3. Password Security
+   User passwords are never stored in plain text. At registration, passwords are processed through Argon2id — the winner of the Password Hashing Competition and the current OWASP-recommended algorithm — prior to database insertion. Argon2id is resistant to both GPU-based brute-force attacks and side-channel attacks. Password complexity is enforced at both the client (real-time validation) and server (backend validation) layers, requiring a minimum of eight characters including at least one uppercase letter, one lowercase letter, and one numeric digit.
+
+4. Session Management
+   Session tokens are cryptographically random UUIDs generated server-side upon successful authentication. Only the SHA-256 hash of the token is stored in the sessions database table; the raw token is delivered to the client as an HttpOnly, Secure, SameSite=Strict cookie. This configuration ensures the token is inaccessible to JavaScript (mitigating XSS-based token theft), transmitted only over HTTPS (mitigating interception), and not sent in cross-site requests (mitigating CSRF). Sessions carry an explicit expiry and are invalidated on logout.
+
+5. Role-Based Access Control (RBAC)
+   Access to all protected routes is enforced through a three-tier role hierarchy: user, admin, and super_admin. Route protection is implemented server-side so that the permission check occurs before any page content is rendered or data is returned, preventing client-side bypass. The super_admin role cannot be assigned through any application interface; it must be provisioned directly at the database level. Admin-level users can manage orders and view audit logs but cannot manage other admin accounts — that capability is exclusively reserved for the super_admin role.
+
+6. Input Validation and Sanitization
+   All user-supplied input is validated both on the client and server sides. React's JSX rendering engine automatically escapes special characters before inserting values into the DOM, providing a foundational defense against reflected XSS. Server-side validation enforces type, length, format, and content constraints on all fields prior to database insertion. Parameterized queries (prepared statements) are used for all database interactions, ensuring that user-supplied strings are never interpreted as SQL syntax, fully mitigating SQL Injection.
+
+7. Authentication Event Logging (auth_logs)
+   Every authentication-related event — successful login, failed login (including attempts against non-existent accounts), logout, and registration — is recorded in the auth_logs table with the associated email address, IP address, user agent string, and timestamp. This data supports brute-force detection by enabling threshold-based alerting when multiple failed login attempts originate from the same IP or target the same account within a defined time window. This table is append-only and may not be modified after insertion.
+
+8. Administrative Audit Logging (audit_logs)
+   Every action performed by an admin or super_admin that modifies system data — such as updating an order status, changing a user's active state, or modifying role assignments — is recorded in the audit_logs table. Each record captures the actor's identity, their role at the time of the action (as a snapshot, not a live foreign key), the action performed, the affected table and record, and the before and after state of the changed data as JSON. This provides a complete, tamper-evident forensic trail that satisfies accountability requirements and supports incident response. This table is also append-only.
+
+9. Order Status History
+   Every change to an order's status or progress value is recorded in the order_status_history table. This append-only log ensures that neither administrators nor clients can retroactively alter the progression record of a service order, maintaining the integrity of the transaction history.
+
+10. Dependency Management
+    Third-party packages are sourced from verified npm registries and pinned to specific version ranges in package.json. Google Fonts are self-hosted at build time via Next.js's next/font module, eliminating runtime requests to external CDNs and removing an external dependency from the application's trust boundary.
+
+
+Conclusion
+
+The HCPC Services Web Portal successfully addresses the core security deficiencies of the organization's prior manual workflow by providing a structured, authenticated, and auditable platform for service availment. The system's architecture is designed with a defense-in-depth approach: transport-layer encryption ensures data confidentiality in transit; Argon2id hashing and secure session management protect credentials and identity; RBAC enforces the principle of least privilege across three distinct access tiers; input validation and parameterized queries eliminate injection attack surfaces; and comprehensive append-only logging ensures accountability and provides the forensic evidence trail necessary for incident response.
+
+The implementation aligns with the CIA Triad throughout its design:
+•  Confidentiality is maintained through TLS, password hashing, HttpOnly session cookies, and strict role-based route protection.
+•  Integrity is upheld through input validation, parameterized queries, append-only audit and status history tables, and snapshot-based audit records.
+•  Availability is supported through a stateless Next.js deployment model that scales horizontally, automatic session expiry to free server resources, and an active/inactive flag on user accounts that allows suspension without data deletion.
+
+The system effectively replaces a disjointed, insecure manual workflow with a centralized, secure web platform that enables the HCPC team to manage services, track order progress, and communicate with clients while maintaining strong information assurance standards.
+
+
+Recommendation for Future Enhancements
+
+While the current implementation establishes a secure and functional foundation, the following enhancements are recommended for subsequent development phases:
+
+1.  Multi-Factor Authentication (MFA): Implement TOTP-based (Time-based One-Time Password) MFA for all admin and super_admin accounts, and offer it as an optional security enhancement for client accounts. This significantly raises the barrier for unauthorized access even in the event of credential compromise.
+
+2.  Rate Limiting and Account Lockout: Implement server-side rate limiting on the authentication endpoint to automatically throttle or temporarily block IP addresses that exceed a defined threshold of failed login attempts within a rolling time window, directly mitigating brute-force and credential-stuffing attacks.
+
+3.  File Upload Security: Should the system be extended to allow clients to upload project requirements or reference files, all uploads must be validated for file type via magic byte inspection (not extension alone), scanned for malware before storage, stored outside the web root, and served through a token-authenticated endpoint rather than direct file URLs.
+
+4.  Content Security Policy (CSP): Implement a strict Content-Security-Policy header to define approved sources for scripts, styles, and other resources, providing a strong secondary defense against XSS in the event that React's automatic escaping is ever bypassed.
+
+5.  Database Encryption at Rest: Encrypt sensitive columns — particularly password_hash, phone, and the body column of the messages table — using AES-256 at the database layer as an additional protection measure in the event of direct database access by an unauthorized party.
+
+6.  Automated Security Scanning: Integrate automated dependency vulnerability scanning (e.g., npm audit) into the CI/CD pipeline to detect and flag known vulnerabilities in third-party packages before deployment.
+
+7.  Real-Time Alerting: Build alerting on top of the auth_logs table to notify the super_admin in real time when anomalous authentication patterns are detected, such as more than five failed login attempts against the same account within ten minutes or logins from geographically inconsistent IP addresses.
+
+8.  Payment Gateway Integration: For future monetization of services, integrate a PCI-DSS compliant third-party payment gateway (e.g., Stripe). No card data should ever transit or be stored on HCPC's own servers; all payment handling should be delegated entirely to the payment provider's secure infrastructure.
+
+
+References
+
+OWASP Foundation. (2021). OWASP Top Ten. Open Web Application Security Project. https://owasp.org/www-project-top-ten/
+
+OWASP Foundation. (2021). OWASP Authentication Cheat Sheet. https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html
+
+OWASP Foundation. (2021). OWASP Session Management Cheat Sheet. https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html
+
+OWASP Foundation. (2021). OWASP SQL Injection Prevention Cheat Sheet. https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html
+
+OWASP Foundation. (2021). OWASP Cross Site Scripting Prevention Cheat Sheet. https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html
+
+Biryukov, A., Dinu, D., & Khovratovich, D. (2016). Argon2: The Memory-Hard Function for Password Hashing. Password Hashing Competition. https://www.password-hashing.net/argon2-specs.pdf
+
+Internet Engineering Task Force. (2018). RFC 8446: The Transport Layer Security (TLS) Protocol Version 1.3. https://datatracker.ietf.org/doc/html/rfc8446
+
+Vercel. (2025). Next.js Documentation: Security Headers. https://nextjs.org/docs/app/building-your-application/configuring/headers
+
+National Institute of Standards and Technology. (2017). NIST Special Publication 800-63B: Digital Identity Guidelines — Authentication and Lifecycle Management. U.S. Department of Commerce. https://doi.org/10.6028/NIST.SP.800-63b
+
+Mozilla Developer Network. (2025). HTTP Headers — Security. MDN Web Docs. https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers
+
+Saltzer, J. H., & Schroeder, M. D. (1975). The protection of information in computer systems. Proceedings of the IEEE, 63(9), 1278–1308. https://doi.org/10.1109/PROC.1975.9939

@@ -27,7 +27,7 @@ export default function Home() {
                   Our Services
                 </Link>
                 <Link
-                  href="/contact"
+                  href="/register"
                   className="bg-purple-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-900 transition"
                 >
                   Get Started
@@ -39,14 +39,14 @@ export default function Home() {
       </section>
 
       {/* Sample Builds Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           <FadeIn>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-heading">
                 Sample Builds
               </h2>
-              <p className="text-lg text-gray-600">
+              <p className="text-xl text-gray-600">
                 Explore our latest custom PC builds
               </p>
             </div>
@@ -69,10 +69,10 @@ export default function Home() {
               Let&apos;s create the perfect system for your needs
             </p>
             <Link
-              href="/contact"
+              href="/register"
               className="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition inline-block shadow-lg"
             >
-              Contact Us Today
+              Get Started Today
             </Link>
           </FadeIn>
         </div>

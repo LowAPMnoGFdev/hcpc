@@ -1,7 +1,7 @@
 import ServiceCard from '@/components/ServiceCard';
 import FadeIn from '@/components/FadeIn';
 import { StaggerContainer, StaggerItem } from '@/components/StaggerContainer';
-import { Gamepad2, MonitorSpeaker, Building2, ArrowUpCircle, Wrench, Droplet, Monitor, MessageCircle, Palette } from 'lucide-react';
+import { Gamepad2, Building2, ArrowUpCircle, Wrench, Monitor, MessageCircle } from 'lucide-react';
 
 export default function ServicesPage() {
   const services = [
@@ -9,11 +9,6 @@ export default function ServicesPage() {
       icon: Gamepad2,
       title: 'Gaming PC Builds',
       description: 'High-performance gaming PCs with the latest GPUs, processors, and cooling solutions. Optimized for 1080p, 1440p, or 4K gaming at maximum settings.'
-    },
-    {
-      icon: MonitorSpeaker,
-      title: 'Workstation Builds',
-      description: 'Professional workstations for 3D rendering, video editing, CAD, programming, and content creation. Optimized for productivity and reliability.'
     },
     {
       icon: Building2,
@@ -31,11 +26,6 @@ export default function ServicesPage() {
       description: 'Professional PC repair services, troubleshooting, virus removal, data recovery, and regular maintenance to keep your system running smoothly.'
     },
     {
-      icon: Droplet,
-      title: 'Custom Water Cooling',
-      description: 'Custom water cooling loops and AIO installations for optimal thermal performance and stunning aesthetics. RGB lighting integration available.'
-    },
-    {
       icon: Monitor,
       title: 'Peripherals Setup',
       description: 'Complete setup with monitors, keyboards, mice, headsets, and other gaming peripherals. Cable management and desk setup included.'
@@ -44,11 +34,6 @@ export default function ServicesPage() {
       icon: MessageCircle,
       title: 'PC Consulting',
       description: 'Expert advice on component selection, compatibility, and system configuration. Budget planning and build optimization recommendations.'
-    },
-    {
-      icon: Palette,
-      title: 'Custom Aesthetics',
-      description: 'Custom PC case modifications, RGB lighting setups, custom paint jobs, and unique builds tailored to your aesthetic preferences.'
     }
   ];
 
