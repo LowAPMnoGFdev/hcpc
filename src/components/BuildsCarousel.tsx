@@ -104,7 +104,7 @@ export default function BuildsCarousel() {
                 priority
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
               
               {/* Build Info */}
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white">

@@ -30,16 +30,21 @@ export default function Footer() {
                   About
                 </Link>
               </li>
+              <li>
+                <Link href="/contact" className="text-gray-400 hover:text-white transition">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
           
           <div>
             <h4 className="text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-gray-400">
-              <li>Web Development</li>
-              <li>Mobile Apps</li>
-              <li>Cloud Solutions</li>
-              <li>Consulting</li>
+              <li>Gaming PC Builds</li>
+              <li>Workstation PCs</li>
+              <li>PC Upgrades</li>
+              <li>Repair & Maintenance</li>
             </ul>
           </div>
           
